@@ -7,6 +7,12 @@ EXTRA_CFLAGS += -Werror
 #EXTRA_CFLAGS += -Wshadow -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes
 
 EXTRA_CFLAGS += -Wno-cast-function-type
+# With Kernel commit 2cc7b6a44ac21d31b398b03f4845c53152070416 (between v5.12
+# and v5.13rc1) the Linux kernel rearranges some code which exposes some
+# violations/ignorations of type limits in the kernel itself. There is nothing
+# we can do against it. Maybe one can check from time to time if the problem
+# still persists.
+EXTRA_CFLAGS += -Wno-type-limits
 EXTRA_CFLAGS += -Wno-unused-function
 EXTRA_CFLAGS += -Wno-unused-parameter
 EXTRA_CFLAGS += -Wno-unused-variable
